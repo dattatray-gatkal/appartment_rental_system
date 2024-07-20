@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Tenants Report{% endblock%}
+{% block script %}
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+	    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/TenantReportStyle.css')}}">
+{% endblock %}
+{% block content %} 
+			<nav class="navbar"> 
+				<ul class="nav-bar">
+					<li class="arrow"><a href="/TotalUsers" class="previous"><i class="fa-solid fa-arrow-left"></i></a></li>	
+					<li class="tenant"><p><i class="fa-solid fa-users"></i> Tenants</p></li>
+				</ul>
+			</nav>
+		</header>
+		<section>
+    <table>
+        <tr>
+            <th>Tenant Id</th>
+            <th>Apartment No.</th>
+            <th>Father Name</th>
+            <th>Address</th>
+        </tr>
+        {% for row in msg6 %} <!-- Change "tenantReport" to "msg6" -->
+            <tr class="live-search-list">
+                <td>{{ row['Uname'] }}</td> <!-- Access data using dictionary keys -->
+                <td>{{ row['aptNo'] }}</td>
+                <td>{{ row['TFatherName'] }}</td>
+                <td>{{ row['PAddress'] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</section>
+
+{% endblock %}
+
+{% block endscript %}
+	<script type="text/javascript" src="{{url_for('static',filename='js/Scripts.js')}}"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+{% endblock %}
